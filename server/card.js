@@ -31,7 +31,7 @@ const cards =  [
     id: 4,
     level: "Medium",
     question: "Can we live on Mercury planet?",
-    answer: "The harsh conditions on the planet's surface and the tenuous atmosphere make it impossible for any life form known to man to exist",
+    answer: "It is impossible for any life form known to man to exist",
     },
 
 
@@ -46,7 +46,7 @@ const cards =  [
     {
     id: 6,
     level: "Medium",
-    question: "Is Mars hot or cold",
+    question: "Is Mars hot or cold?",
     answer: "Mars is generally considered a cold planet, with average temperatures that are much colder than Earth's",
     
     },

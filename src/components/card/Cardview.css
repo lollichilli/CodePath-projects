@@ -1,0 +1,44 @@
+.card {
+    display: grid;
+    place-items: center;
+    width: 30rem;
+    height: 18rem;
+    margin: 0 auto;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    font-size: medium;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard */
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1px );
+    -webkit-backdrop-filter: blur( 1px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    
+
+}
+
+
+
+.dir-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+
+    
+}
+
+
+.card.Easy {
+    background-color: rgba(24, 73, 24, 0.65);
+}
+.card.Medium {
+    background-color: rgba(230, 224, 51, 0.65);
+}
+.card.Hard {
+    background-color: rgba(238, 62, 52, 0.65);
+}
