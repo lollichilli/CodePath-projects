@@ -26,7 +26,7 @@ const Cardview = () => {
                 break
             case 'NEXT':
                 // const nextCard = cards.find(c => c.id === (card.id < cards.length - 1 ? card.id + 1: cards.length - 1))             
-                const nextCard = cards[Math.floor(Math.random() * cards.length)]  
+                const nextCard =  cards[Math.floor(Math.random() * cards.length)]  
                 setCard(nextCard)
                 setFront(true)
                 break
@@ -41,8 +41,19 @@ const Cardview = () => {
     <div>
 
         <div className='card-view'>
-            <div className={`card ${card.level ?? ''}`} onClick={handleCardFlip}>
-                {isFront ? (card.question ?? '') : (card.answer ?? '')}
+            <div className={`flip-card ${card.level ?? ''}`} onClick={handleCardFlip}>
+               {( () => {
+                switch(isFront) {
+                    case true:
+                        return <div className='fli[-card-front'>{(card.question ?? '')}</div>
+                    case false:
+                        return <div className='fli[-card-back'>{(card.answer ?? '')}</div>
+                    default:
+                        return
+                }
+               }
+
+               ) ()}
             </div>
 
         </div>

@@ -1,4 +1,4 @@
-.card {
+.flip-card {
     display: grid;
     place-items: center;
     width: 30rem;
@@ -33,12 +33,12 @@
 }
 
 
-.card.Easy {
+.flip-card.Easy {
     background-color: rgba(24, 73, 24, 0.65);
 }
-.card.Medium {
+.flip-card.Medium {
     background-color: rgba(230, 224, 51, 0.65);
 }
-.card.Hard {
+.flip-card.Hard {
     background-color: rgba(238, 62, 52, 0.65);
 }
