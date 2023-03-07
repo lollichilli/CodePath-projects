@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Header  from './components/layout/Header'
-import Cardview from './components/card/Cardview'
+import CardView from './components/card/CardView'
 import './App.css'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (<div className='App'>
   
   <Header></Header>
-  <Cardview></Cardview>
+  <CardView></CardView>
 </div>)
 }
 

@@ -1,69 +1,70 @@
-import React from 'react';
-import "./Cardview.css"
-import { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import "./CardView.css"
 import cards from '../../../server/card';
 import Button from '../button/Button';
 
-const Cardview = () => {
-
-    const [card, setCard] = useState(cards[0] ?? '');
-    const [isFront, setFront] = useState(true)
-
-    const handleCardFlip = () => {
-        setFront(isFront => !isFront)
-        console.log(isFront)
+const CardView = () => {
+    const [card, setCard] = useState(cards[0] ?? ''); 
+    const [isFront, setFront] = useState(true);
+  
+    const handleFlipCard = () => {
+      setFront(isFront => !isFront)
     }
-
-    const handleCardSwitch = (dir) => {
+    
+    const handleSwitchCard = (dir) => {
         switch (dir) {
-            case 'PREVIOUS':
-
-                // const preCard = cards.find(c => c.id === ( card.id > 1 ? card.id - 1 : 1))
-                const preCard = cards[Math.floor(Math.random() * cards.length)]
-                setCard(preCard)
-                setFront(true)
-
-                break
-            case 'NEXT':
-                // const nextCard = cards.find(c => c.id === (card.id < cards.length - 1 ? card.id + 1: cards.length - 1))             
-                const nextCard =  cards[Math.floor(Math.random() * cards.length)]  
-                setCard(nextCard)
-                setFront(true)
-                break
-            default: 
-                return
-
-        }
-
-}
-
+        case 'PREVIOUS':
+          // const prevCard = cards.find(c => c.id === (card.id > 1 ? card.id - 1 : 1))
+          const prevCard = cards[Math.floor(Math.random() * cards.length)]
+          setCard(prevCard)
+          setFront(true)
+          break;
+        
+        case 'NEXT':
+          // const nextCard = cards.find(c => c.id === (card.id < cards.length - 1 ? card.id + 1 : cards.length - 1))
+          const nextCard = cards[Math.floor(Math.random() * cards.length)]
+          setCard(nextCard)
+          setFront(true)
+          break;
+        
+        default:
+          return
+      }
+    }
+  
+    const handlePrevCard = useCallback(() => handleSwitchCard('PREVIOUS'), [])
+    const handleNextCard = useCallback(() => handleSwitchCard('NEXT'), [])
+      
     return (
-    <div>
-
-        <div className='card-view'>
-            <div className={`flip-card ${card.level ?? ''}`} onClick={handleCardFlip}>
-               {( () => {
-                switch(isFront) {
-                    case true:
-                        return <div className='fli[-card-front'>{(card.question ?? '')}</div>
-                    case false:
-                        return <div className='fli[-card-back'>{(card.answer ?? '')}</div>
-                    default:
-                        return
-                }
-               }
-
-               ) ()}
+      <div>
+        <div className={`flip-card ${card.level ?? ''}`} onClick={handleFlipCard}>
+          <div className={`flip-card-inner ${isFront ? 'front' : ''}`} >
+            <div className="flip-card-front"><p>{(card.question ?? '')}</p></div>
+            <div className="flip-card-back">
+              <p>{(card.answer ?? '')}</p>
             </div>
-
+            {/* {
+              (() => {
+                switch (isFront) {
+                  case true:
+                    return <div className="flip-card-front"><p>{(card.question ?? '')}</p></div>
+                  case false:
+                    return <div className="flip-card-back"><p>{(card.answer ?? '')}</p></div>
+                  default:
+                    return null
+                }
+              })()
+            } */}
+          </div>
         </div>
-
         <div className='dir-btn'>
-            <Button content="Previous" onHandleCard= {() => handleCardSwitch('PREVIOUS')}></Button>
-            <Button content="Next" onHandleCard={() => handleCardSwitch('NEXT')}></Button>
+          {/* <Button onHandleCard={() => handleSwitchCard('PREVIOUS')}>Previous</Button> */}
+          {/* <Button onHandleCard={() => handleSwitchCard('NEXT')}>Next</Button> */}
+          <Button onHandleCard={handlePrevCard}>Previous</Button>
+          <Button onHandleCard={handleNextCard}>Next</Button>
         </div>
-    </div>
+      </div>
     );
-};
+  };
 
-export default Cardview;
+  export default CardView
